@@ -18,11 +18,14 @@ namespace CsvFileReader
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Enter the file path:");
+            string filePath = Console.ReadLine()
+;
             var config = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
                 HasHeaderRecord = false,
             };
-            using (var streamReader = new StreamReader(@"E:\TestCSharp\TestCSharp\companies_data.csv"))
+            using (var streamReader = new StreamReader(@filePath))
             using (var csvReader = new CsvReader(streamReader, config))
             {
                 csvReader.Context.RegisterClassMap<FileModelMap>();

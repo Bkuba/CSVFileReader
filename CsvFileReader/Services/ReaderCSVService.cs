@@ -25,12 +25,10 @@ namespace CsvFileReader.Services
                                     .ToList();
                 var parentsPrint = parents.ElementAt(i);
 
-                Console.WriteLine($"{parentsPrint.FirstId}\t{parentsPrint.SecondId}\t{parentsPrint.Name}\t" +
-                $"{parentsPrint.Surname}\t{parentsPrint.Company}\t{parentsPrint.City}\t{parentsPrint.Position}");
-                children.ForEach(x => Console.WriteLine("\t" + "->" + $"{x.FirstId}\t{x.SecondId}\t{x.Name}\t" +
-                 $"{x.Surname}\t{x.Company}\t{x.City}\t{x.Position}"));
+                Console.WriteLine($"{parentsPrint.Name}\t{parentsPrint.Surname}\t{parentsPrint.Company}\t{parentsPrint.City}\t{parentsPrint.Position}");
+                children.ForEach(x => Console.WriteLine("-> " + $"{x.Name}\t{x.Surname}\t{x.Company}\t{x.City}\t{x.Position}"));
 
-                int level = 1;
+                int level = 0;
                 do
                 {
                     level++;
@@ -43,8 +41,7 @@ namespace CsvFileReader.Services
                     foreach (var child in children)
                     {
                         printWorker(level);
-                        Console.WriteLine($"{child.FirstId}\t{child.SecondId}\t{child.Name}\t" +
-                        $"{child.Surname}\t{child.Company}\t{child.City}\t{child.Position}");
+                        Console.WriteLine($"{child.Name}\t{child.Surname}\t{child.Company}\t{child.City}\t{child.Position}");
                     }
                 } while (children.Count != 0);
             }
@@ -56,7 +53,7 @@ namespace CsvFileReader.Services
             {
                 Console.Write("\t");
             }
-            Console.Write("->"); 
+            Console.Write("-> "); 
         }
 
     }
